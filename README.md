@@ -46,6 +46,61 @@ MangaNarrator operates today as a complete, working AI pipeline.
 
 Beyond its current application, the architecture is intentionally designed to serve as a reusable base for additional AI-driven media workflows, enabling adaptation to new content formats, interaction models, and automated storytelling systems.
 
+---
+
+## 🖥 Frontend Interface
+
+### Preview & BBox Editing
+![Frontend Screenshot](docs/scrshot1.png)
+### Dialogue Editing & TTS Interface
+![Frontend Screenshot](docs/scrshot2.png)
+
+---
+
+## 📄 Example Structured OCR Output
+
+```
+{
+    "run_id": "api_batch_20260111_180315_777be1a4",
+    "error": null,
+    "ocr_json_file": {
+        "namespace": "outputs",
+        "path": "api_batch_20260111_180315_777be1a4/A_Returners_Magic_Should_Be_Special_1/ocrrun_final.json"
+    },
+    "images": [
+        {
+            "image_id": 1,
+            "has_text": true,
+            "image_info": {
+                "image_ref": {
+                    "namespace": "inputs",
+                    "path": "A_Returners_Magic_Should_Be_Special_1/a_returners_magic_should_be_special_1_1_part01.jpg"
+                },
+                "image_width": 720,
+                "image_height": 6600
+            },
+            "dialogue_lines": [
+                {
+                    "id": 1,
+                    "image_id": "1",
+                    "speaker": "narrator",
+                    "gender": "male",
+                    "emotion": "serious",
+                    "text": "At the end of hell, there resides labyrinths of shadows.",
+                    "status": "ok",
+                    "error": null,
+                    "original_bbox": {
+                        "x1": 382.5,
+                        "y1": 1333.333311962481,
+                        "x2": 773.0357142857142,
+                        "y2": 1391.083311962481
+                    }
+                }
+            ]
+        }
+    ]
+}
+```
 
 ---
 
