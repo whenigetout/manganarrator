@@ -1,8 +1,11 @@
 # MangaNarrator
 
+> End-to-end AI media automation system built with Python, Django, TypeScript, and GPU-accelerated inference.
+
+
 MangaNarrator is a production-ready, modular AI media automation platform that converts static visual content into structured, emotion-aware narrated video.
 
-Built as a reusable AI workflow foundation, it combines vision models, structured data contracts, emotion propagation, configurable speech synthesis, and deterministic video rendering within a scalable microservice architecture.
+It integrates OCR, structured contracts, emotion-aware speech synthesis, and deterministic video rendering into a scalable microservice architecture designed for reusable AI-driven media workflows.
 
 While currently applied to manga-style visual narration, the underlying system is designed to support broader AI-driven media generation and experimentation across multiple content formats.
 
@@ -187,6 +190,16 @@ Each component operates as an isolated service with clearly defined contracts, e
 
 ---
 
+## 📌 Project Status
+
+MangaNarrator is fully functional and production-capable in its current architecture.
+
+All core services — OCR, TTS, orchestration, and video rendering — are implemented and work as a complete system.
+
+Active development focuses on performance optimization, automation maturity, distributed execution support, and expansion of the platform as a generalized AI media workflow foundation.
+
+---
+
 ## 🔮 Roadmap
 
 - Refining the preview in the frontend
@@ -217,14 +230,6 @@ Its architecture enables:
 The long-term goal is to evolve this system into a flexible foundation for scalable AI-powered storytelling and interactive media experiences.
 
 ---
-
-## 📌 Project Status
-
-MangaNarrator is fully functional and production-capable in its current architecture.
-
-All core services — OCR, TTS, orchestration, and video rendering — are implemented and work as a complete system.
-
-Active development focuses on performance optimization, automation maturity, distributed execution support, and expansion of the platform as a generalized AI media workflow foundation.
 
 
 
