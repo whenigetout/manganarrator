@@ -53,49 +53,72 @@ Beyond its current application, the architecture is intentionally designed to se
 
 ```mermaid
 
-flowchart LR
 
-    subgraph Client_Layer
-        UI[Frontend - TypeScript UI]
-    end
+%%{init: {'flowchart': {'curve': 'linear'}}}%%
+flowchart TB
 
-    subgraph Orchestration_Layer
-        ORCH[Django Orchestrator]
-    end
+%% ================= LAYER 1 =================
+FE["Frontend UI"]
 
-    subgraph Core_Services
-        OCR[OCR Service]
-        CONTRACTS[Shared Contracts Layer]
-        TTS[TTS Service]
-        VIDEO[Video Builder - FFmpeg]
-    end
+%% ================= LAYER 2 =================
+ORCH["Django Orchestrator"]
 
-    subgraph Optional_OCR_Backend
-        PADDLE[Paddle OCR Backend]
-    end
+%% ================= LAYER 3 =================
+INPUTS["Shared Inputs Folder"]
+OUTPUTS["Shared Outputs Folder"]
 
-    subgraph Compute
-        GPU[Local GPU Inference - 8GB VRAM]
-    end
+%% ================= LAYER 4 =================
+OCR["OCR Service"]
+PADDLE["Paddle OCR"]
+TTS["TTS Service"]
+VIDEO["Video Service (FFmpeg)"]
 
-    subgraph Output
-        OUT[Rendered Video Output]
-    end
+%% ================= LAYER 5 =================
+CONTRACTS["Shared Contracts"]
+GPU["RTX 3070 Ti - 8GB VRAM"]
 
-    UI --> ORCH
-    ORCH --> OCR
-    ORCH --> TTS
-    ORCH --> VIDEO
+%% ======== MAIN FLOW ========
+FE --> ORCH
 
-    OCR --> CONTRACTS
-    CONTRACTS --> TTS
-    TTS --> VIDEO
-    VIDEO --> OUT
+ORCH --> INPUTS
+ORCH --> OUTPUTS
 
-    OCR --> PADDLE
+FE --> OCR
+OCR --> PADDLE
+PADDLE --> OCR
+OCR --> OUTPUTS
 
-    OCR --> GPU
-    TTS --> GPU
+FE --> TTS
+TTS --> OUTPUTS
+
+VIDEO --> INPUTS
+VIDEO --> OUTPUTS
+
+%% ======== SHARED CONTRACTS ========
+OCR --> CONTRACTS
+TTS --> CONTRACTS
+VIDEO --> CONTRACTS
+ORCH --> CONTRACTS
+
+%% ======== GPU USAGE ========
+OCR --> GPU
+TTS --> GPU
+VIDEO --> GPU
+
+
+%% ======== STYLING ========
+classDef ui fill:#2563eb,color:#ffffff,stroke:#1e3a8a;
+classDef orchestrator fill:#7c3aed,color:#ffffff,stroke:#4c1d95;
+classDef storage fill:#374151,color:#ffffff,stroke:#111827;
+classDef service fill:#0f172a,color:#ffffff,stroke:#3b82f6;
+classDef infra fill:#111827,color:#ffffff,stroke:#f59e0b;
+
+class FE ui;
+class ORCH orchestrator;
+class INPUTS,OUTPUTS storage;
+class OCR,PADDLE,TTS,VIDEO service;
+class CONTRACTS infra;
+class GPU infra;
 
 ```
 
