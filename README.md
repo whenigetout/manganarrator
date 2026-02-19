@@ -50,19 +50,55 @@ Beyond its current application, the architecture is intentionally designed to se
 ---
 
 ## 🏗 System Architecture
+
+```mermaid
+
+flowchart LR
+
+    subgraph Client_Layer
+        UI[Frontend - TypeScript UI]
+    end
+
+    subgraph Orchestration_Layer
+        ORCH[Django Orchestrator]
+    end
+
+    subgraph Core_Services
+        OCR[OCR Service]
+        CONTRACTS[Shared Contracts Layer]
+        TTS[TTS Service]
+        VIDEO[Video Builder - FFmpeg]
+    end
+
+    subgraph Optional_OCR_Backend
+        PADDLE[Paddle OCR Backend]
+    end
+
+    subgraph Compute
+        GPU[Local GPU Inference - 8GB VRAM]
+    end
+
+    subgraph Output
+        OUT[Rendered Video Output]
+    end
+
+    UI --> ORCH
+    ORCH --> OCR
+    ORCH --> TTS
+    ORCH --> VIDEO
+
+    OCR --> CONTRACTS
+    CONTRACTS --> TTS
+    TTS --> VIDEO
+    VIDEO --> OUT
+
+    OCR --> PADDLE
+
+    OCR --> GPU
+    TTS --> GPU
+
 ```
-[Input Images]
-↓
-[OCR Service]
-↓
-[Shared Contracts Layer]
-↓
-[TTS Service]
-↓
-[Video Builder]
-↓
-[Final Rendered Video]
-```
+
 
 Each component operates as an isolated service with clearly defined contracts, enabling independent development, testing, and scaling.
 
@@ -89,7 +125,7 @@ Each component operates as an isolated service with clearly defined contracts, e
   Shared schemas and models used across services for structured data exchange.
 
 - **[manganarrator_paddle_ocr](https://github.com/whenigetout/manganarrator_paddle_ocr)**  
-  PaddleOCR-based helper module for alternate OCR backend support.
+  PaddleOCR-based helper module for Dialogue/Text Bounding Box mapping support.
 
 ---
 
