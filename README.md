@@ -1,24 +1,51 @@
 # MangaNarrator
 
-MangaNarrator is a distributed AI pipeline that transforms static manga or manhwa panels into structured, emotion-aware narrated video content.
+MangaNarrator is a production-ready, modular AI media automation platform that converts static visual content into structured, emotion-aware narrated video.
 
-It integrates OCR, emotion tagging, TTS synthesis, and deterministic video rendering into a modular, service-oriented architecture.
+Built as a reusable AI workflow foundation, it combines vision models, structured data contracts, emotion propagation, configurable speech synthesis, and deterministic video rendering within a scalable microservice architecture.
+
+While currently applied to manga-style visual narration, the underlying system is designed to support broader AI-driven media generation and experimentation across multiple content formats.
+
+![Python](https://img.shields.io/badge/Python-3.x-blue)
+![Django](https://img.shields.io/badge/Django-Backend-green)
+![FastAPI](https://img.shields.io/badge/FastAPI-Backend-green)
+![TypeScript](https://img.shields.io/badge/TypeScript-Frontend-blue)
+![Next.js](https://img.shields.io/badge/Next.js-Frontend-blue)
+![FFmpeg](https://img.shields.io/badge/FFmpeg-Rendering-black)
+![Architecture](https://img.shields.io/badge/Architecture-Microservices-orange)
 
 ---
 
-## 🚀 Overview
+## 🚀 Problem & Solution
 
-Manual narration of manga content is time-consuming and difficult to scale.
+Manual narration and video adaptation of visual content is labor-intensive and difficult to scale.
 
-MangaNarrator solves this by automating the full pipeline:
+MangaNarrator provides an end-to-end automated system that:
 
-1. Extract dialogue and metadata from images using OCR
-2. Propagate emotion labels and character information
-3. Generate emotion-aware voice synthesis
-4. Render synchronized video output using FFmpeg
-5. Support batch processing via structured run IDs
+1. Extracts dialogue and structured metadata from images (eg. Manhwa images) using OCR
+2. Attaches speaker and emotion context at the dialogue level
+3. Generates configurable, emotion-aware TTS output
+4. Produces synchronized video through deterministic FFmpeg composition
+5. Supports batch execution through structured run-based orchestration
 
-The system is designed for scalability, traceability, and local GPU inference.
+The system is built with scalability, traceability, and GPU-constrained local inference in mind.
+
+---
+## ✅ Current Capabilities
+
+The system is fully operational and supports:
+
+- End-to-end execution from raw image input to rendered video output
+- Structured OCR extraction with dialogue-level identifiers
+- Emotion-aware TTS generation with configurable inference controls
+- Deterministic FFmpeg-based video assembly
+- Batch processing of multi-chapter inputs
+- Frontend-based orchestration and execution control
+
+MangaNarrator operates today as a complete, working AI pipeline.
+
+Beyond its current application, the architecture is intentionally designed to serve as a reusable base for additional AI-driven media workflows, enabling adaptation to new content formats, interaction models, and automated storytelling systems.
+
 
 ---
 
@@ -37,7 +64,7 @@ The system is designed for scalability, traceability, and local GPU inference.
 [Final Rendered Video]
 ```
 
-Each component is isolated as an independent service.
+Each component operates as an isolated service with clearly defined contracts, enabling independent development, testing, and scaling.
 
 ---
 
@@ -66,50 +93,94 @@ Each component is isolated as an independent service.
 
 ---
 
-## ⚙️ Engineering Highlights
+## ⚙️ Engineering Decisions
 
-- UUID-based image traceability across the pipeline
-- Run ID grouping for large batch processing
-- Structured OCR JSON with dialogue-level IDs
-- Emotion propagation from OCR → TTS
-- Deterministic FFmpeg command construction
-- Modular service isolation for scalability
-- Local GPU inference optimized for 8GB VRAM environments
+- UUID-based traceability for every image and dialogue unit across the pipeline
+- Run ID orchestration for large batch processing (multi-chapter support)
+- Strict shared contracts layer for cross-service schema consistency
+- Emotion metadata propagation from OCR → TTS for expressive synthesis
+- Deterministic FFmpeg command generation for reproducible builds
+- Service isolation to prevent tight coupling
+- Local GPU inference optimized for 8GB VRAM constraints
+- Clear separation between orchestration, compute services, and UI layer
 
 ---
 
-## 🛠 Tech Stack
+## 🛠 Technology Stack
 
+**Backend & Orchestration**
 - Python
 - Django
+
+**Frontend**
 - TypeScript
+
+**Media & Rendering**
 - FFmpeg
+
+**AI & Inference**
 - Vision/OCR models
-- Emotion-aware TTS models
-- Local AI inference workflows
+- Emotion-aware TTS engines
+- Local GPU inference workflows (8GB VRAM optimized)
+
+**Architecture**
+- Service-oriented design
+- Shared schema contracts
+- UUID-based pipeline tracking
+
 
 ---
 
-## 🎯 Design Goals
+## 🎯 Design Principles
 
-- End-to-end automation
-- Modular service architecture
-- Scalable batch processing
-- High traceability for debugging
-- Extensible for future AI modules
+- Automation-first architecture
+- Deterministic and reproducible outputs
+- Service decoupling and modularity
+- Strong data contracts across boundaries
+- Scalable batch execution model
+- Extensibility for future AI modules and deployment environments
+
 
 ---
 
 ## 🔮 Roadmap
 
+- Refining the preview in the frontend
 - Distributed worker queue support
 - Advanced timeline editor in frontend
 - Multi-speaker emotion control
+- Finetuning the current voices for reliable, predictable emotion-aware TTS synthesis
+- More voices for TTS and finetuning
 - Cloud-deployable inference option
 - Performance benchmarking dashboard
+- Speaker recognition across different chapters
+- RVC integration for custom voice cloning for the manual voice overs
 
 ---
 
-## 📌 Status
+## 🌐 Platform Vision
 
-Active development. Designed as a scalable foundation for AI-driven media automation.
+MangaNarrator is designed not merely as a single-purpose tool, but as a modular AI media infrastructure layer.
+
+Its architecture enables:
+
+- Reuse of OCR and structured extraction pipelines
+- Switching the currently used LLMs (in any of the services) to a different one 
+- Reuse of emotion-aware TTS generation modules
+- Adaptation to new visual, interactive, or narrative formats
+- Extension into experimental AI-driven media applications
+
+The long-term goal is to evolve this system into a flexible foundation for scalable AI-powered storytelling and interactive media experiences.
+
+---
+
+## 📌 Project Status
+
+MangaNarrator is fully functional and production-capable in its current architecture.
+
+All core services — OCR, TTS, orchestration, and video rendering — are implemented and work as a complete system.
+
+Active development focuses on performance optimization, automation maturity, distributed execution support, and expansion of the platform as a generalized AI media workflow foundation.
+
+
+
