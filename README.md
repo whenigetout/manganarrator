@@ -22,7 +22,7 @@ Manual narration and video adaptation of visual content is labor-intensive and d
 
 MangaNarrator provides an end-to-end automated system that:
 
-1. Extracts dialogue and structured metadata from images (eg. Manhwa images) using OCR
+1. Extracts dialogue and structured metadata from images (e.g., structured comic-style images) using OCR
 2. Attaches speaker and emotion context at the dialogue level
 3. Generates configurable, emotion-aware TTS output
 4. Produces synchronized video through deterministic FFmpeg composition
@@ -165,7 +165,7 @@ MangaNarrator is designed not merely as a single-purpose tool, but as a modular 
 Its architecture enables:
 
 - Reuse of OCR and structured extraction pipelines
-- Switching the currently used LLMs (in any of the services) to a different one 
+- Swappable model backends across services (LLMs, OCR engines, TTS models)
 - Reuse of emotion-aware TTS generation modules
 - Adaptation to new visual, interactive, or narrative formats
 - Extension into experimental AI-driven media applications
