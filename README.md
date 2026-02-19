@@ -51,77 +51,7 @@ Beyond its current application, the architecture is intentionally designed to se
 
 ## 🏗 System Architecture
 
-```mermaid
-
-
-%%{init: {'flowchart': {'curve': 'linear'}}}%%
-flowchart TB
-
-%% ================= LAYER 1 =================
-FE["Frontend UI"]
-
-%% ================= LAYER 2 =================
-ORCH["Django Orchestrator"]
-
-%% ================= LAYER 3 =================
-INPUTS["Shared Inputs Folder"]
-OUTPUTS["Shared Outputs Folder"]
-
-%% ================= LAYER 4 =================
-OCR["OCR Service"]
-PADDLE["Paddle OCR"]
-TTS["TTS Service"]
-VIDEO["Video Service (FFmpeg)"]
-
-%% ================= LAYER 5 =================
-CONTRACTS["Shared Contracts"]
-GPU["RTX 3070 Ti - 8GB VRAM"]
-
-%% ======== MAIN FLOW ========
-FE --> ORCH
-
-ORCH --> INPUTS
-ORCH --> OUTPUTS
-
-FE --> OCR
-OCR --> PADDLE
-PADDLE --> OCR
-OCR --> OUTPUTS
-
-FE --> TTS
-TTS --> OUTPUTS
-
-VIDEO --> INPUTS
-VIDEO --> OUTPUTS
-
-%% ======== SHARED CONTRACTS ========
-OCR --> CONTRACTS
-TTS --> CONTRACTS
-VIDEO --> CONTRACTS
-ORCH --> CONTRACTS
-
-%% ======== GPU USAGE ========
-OCR --> GPU
-TTS --> GPU
-VIDEO --> GPU
-
-
-%% ======== STYLING ========
-classDef ui fill:#2563eb,color:#ffffff,stroke:#1e3a8a;
-classDef orchestrator fill:#7c3aed,color:#ffffff,stroke:#4c1d95;
-classDef storage fill:#374151,color:#ffffff,stroke:#111827;
-classDef service fill:#0f172a,color:#ffffff,stroke:#3b82f6;
-classDef infra fill:#111827,color:#ffffff,stroke:#f59e0b;
-
-class FE ui;
-class ORCH orchestrator;
-class INPUTS,OUTPUTS storage;
-class OCR,PADDLE,TTS,VIDEO service;
-class CONTRACTS infra;
-class GPU infra;
-
-```
-
+![MangaNarrator Architecture](docs/architecture.png)
 
 Each component operates as an isolated service with clearly defined contracts, enabling independent development, testing, and scaling.
 
