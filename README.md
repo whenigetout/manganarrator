@@ -1,6 +1,6 @@
 # MangaNarrator
 
-> End-to-end AI media automation system built with Python, Django, TypeScript, and GPU-accelerated inference.
+> End-to-end AI media automation system built with Python, Django, TypeScript (Next.js router), and GPU-accelerated inference.
 
 
 MangaNarrator is a production-ready, modular AI media automation platform that converts static visual content into structured, emotion-aware narrated video.
@@ -121,7 +121,7 @@ Each component operates as an isolated service with clearly defined contracts, e
   Django-based orchestration layer coordinating pipeline execution and I/O.
 
 - **[manganarrator_frontend](https://github.com/whenigetout/manganarrator_frontend)**  
-  TypeScript frontend for managing runs, previewing OCR output, and triggering TTS/video builds.
+  TypeScript (Next.js) frontend for managing runs, previewing OCR output, and triggering TTS/video builds.
 
 - **[manganarrator_ocr](https://github.com/whenigetout/manganarrator_ocr)**  
   Vision-based OCR service extracting dialogue, bounding boxes, speaker metadata, and emotion labels.
@@ -158,9 +158,10 @@ Each component operates as an isolated service with clearly defined contracts, e
 **Backend & Orchestration**
 - Python
 - Django
+- FastAPI
 
 **Frontend**
-- TypeScript
+- TypeScript (Next.js)
 
 **Media & Rendering**
 - FFmpeg
