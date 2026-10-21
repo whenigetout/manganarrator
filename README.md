@@ -1,3 +1,5 @@
+> Returning to this repo? Start with [AGENTS.md](AGENTS.md) and [project context](docs/PROJECT_CONTEXT.md).
+
 # MangaNarrator
 
 > End-to-end AI media automation system built with Python, Django, TypeScript (Next.js router), and GPU-accelerated inference.
